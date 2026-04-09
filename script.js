@@ -58,10 +58,10 @@ async function onLogin(user) {
 
   // Fallback for users created before the trigger was set up
   if (!profile) {
-    await db.from('profiles').upsert({ id: user.id, name: user.email });
+    await db.from('profiles').upsert({ id: user.id, name: 'User' });
   }
 
-  currentName = profile?.name || user.email;
+  currentName = profile?.name || 'User';
   document.getElementById('user-greeting').textContent = `Hi, ${currentName}`;
 
   const { data: existing } = await db
@@ -223,7 +223,7 @@ function displayIncomingRequests(requests) {
 
   requests.forEach(req => {
     const isSameDay = req.offer_day === req.want_day;
-    const requester = req.profiles?.name || 'Someone';
+    const requester = req.profiles?.name || 'A colleague';
     const div = document.createElement('div');
     div.className = 'request-item';
     div.id = `request-${req.id}`;
