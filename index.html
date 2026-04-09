@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Shift Swap</title>
+</head>
+<body>
+
+  <!-- ── Auth Screen (shown when logged out) -->
+  <div id="auth-screen" class="hidden">
+    <div id="auth-card">
+      <h1>Shift Swap</h1>
+      <p class="auth-subtitle">Sign in to manage your schedule</p>
+
+      <form id="auth-form" novalidate>
+        <div id="name-group" class="form-group hidden">
+          <label for="auth-name">Your Name</label>
+          <input type="text" id="auth-name" placeholder="e.g. Sarah Jones" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="auth-email">Email</label>
+          <input type="email" id="auth-email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="auth-password">Password</label>
+          <input type="password" id="auth-password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <p id="auth-error" class="auth-error hidden"></p>
+        <button type="submit" id="auth-submit" class="btn-primary full-width">Sign In</button>
+      </form>
+
+      <p class="auth-toggle">
+        Don't have an account? <a href="#" id="auth-toggle-link">Sign up</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ── Main App (shown when logged in) -->
+  <div id="app" class="hidden">
+    <header>
+      <div class="header-left">
+        <h1>Shift Swap</h1>
+        <p class="subtitle">Manage your schedule swaps</p>
+      </div>
+      <div class="header-right">
+        <span id="user-greeting" class="user-greeting"></span>
+        <button id="logout-btn" class="btn-logout">Sign Out</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="your-schedule">
+        <h2>Your Schedule</h2>
+        <div id="schedule-list"></div>
+      </section>
+
+      <section id="my-requests-section">
+        <h2>Your Pending Requests</h2>
+        <div id="my-requests-list"></div>
+      </section>
+
+      <section id="swap-requests">
+        <h2>Incoming Swap Requests</h2>
+        <div id="requests-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ── Swap Request Modal-->
+  <div id="modal-overlay" class="hidden">
+    <div id="modal">
+      <div class="modal-header">
+        <h3>Request a Swap</h3>
+        <button class="close-btn" id="modal-close">&times;</button>
+      </div>
+      <p id="modal-subtitle" class="modal-subtitle"></p>
+      <div class="form-group">
+        <label>What are you looking for?</label>
+        <div class="form-row">
+          <select id="want-day-select"></select>
+          <select id="want-period-select">
+            <option value="Morning">Morning (9am–5pm)</option>
+            <option value="Evening">Evening (2pm–10pm)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn-secondary">Cancel</button>
+        <button id="modal-submit" class="btn-primary">Submit Request</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- Supabase JS client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
