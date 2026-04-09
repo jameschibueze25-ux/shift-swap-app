@@ -262,7 +262,7 @@ h2 {
   color: var(--text-muted);
 }
 
-
+/* ─── My Request Items ───────────────────────────────────────────────────────── */
 .my-request-item {
   display: flex;
   align-items: center;
@@ -305,7 +305,8 @@ h2 {
   color: #854d0e;
 }
 
-
+/* ─── Incoming Request Cards ─────────────────────────────────────────────────── */
+.request-item {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
